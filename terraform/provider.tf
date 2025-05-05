@@ -1,6 +1,6 @@
 terraform {
   backend "s3" {
-    bucket         = "hypertrio-terraform"  
+    bucket         = "hypertrio-terraformm"  
     key            = "terraform/terraform.tfstate"
     region         = "eu-west-2"
   }
