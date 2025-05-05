@@ -1,12 +1,12 @@
 name: Build and Push Docker Image to ECR
 
 on:
-    workflow_dispatch:
-      inputs:
-        confirmation:
-          description: 'Type "yes" to confirm deployment'
-          required: true
-          default: 'no'
+  workflow_dispatch:
+    inputs:
+      confirmation:
+        description: 'Type "yes" to confirm deployment'
+        required: true
+        default: 'no'
 
 jobs:
   build:
@@ -16,7 +16,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Configure AWS Credentials
+      - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4.0.2
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
@@ -27,8 +27,7 @@ jobs:
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
 
-      - name: Build, tag as latest, and push Docker image to ECR
-        id: build-image
+      - name: Build and push Docker image to ECR
         env:
           ECR_REGISTRY: ${{ secrets.ECR_REGISTRY }}
         run: |
