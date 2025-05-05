@@ -1,19 +1,15 @@
 FROM node:18-alpine AS builder
 
-
 WORKDIR /app
 
 
-COPY package.json package-lock.json ./
-
+COPY hypertrio/package.json hypertrio/package-lock.json ./
 
 RUN npm install
 
 
-COPY . .
-
+COPY hypertrio .
 
 EXPOSE 3000
-
 
 CMD ["npm", "run", "dev"]
